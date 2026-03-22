@@ -120,7 +120,7 @@ class Model(Module):
         self.train()
         return history
 
-    # ── train steps ────────────────────────────────────────────────────────
+    #training steps
 
     def _step_mlx(self, Xb, yb, loss_fn, optimizer):
         x_t = mx.array(Xb.astype(np.float32))
@@ -162,7 +162,7 @@ class Model(Module):
         pred = self.forward(Tensor(X.astype(np.float32), requires_grad=False))
         return loss_fn(pred, y).item()
 
-    # ── inference ──────────────────────────────────────────────────────────
+    # Inference
 
     def predict(self, X, batch_size=256):
         """Raw model output as np.ndarray."""
@@ -186,7 +186,7 @@ class Model(Module):
     def accuracy(self, X, y, batch_size=256):
         return float((self.predict_classes(X, batch_size) == y).mean())
 
-    # ── persistence ────────────────────────────────────────────────────────
+    # persistence
 
     def save(self, path):
         params = self.parameters()
@@ -194,7 +194,7 @@ class Model(Module):
         for i, p in enumerate(params):
             weights[f"p{i}"] = np.array(p) if BACKEND == "mlx" else p.data
         np.savez(path, **weights)
-        print(f"  ✓ Saved to {path}")
+        print(f"  Saved to {path}")
 
     def load(self, path):
         data   = np.load(path)
@@ -207,4 +207,4 @@ class Model(Module):
                 p[...] = mx.array(data[key])
             else:
                 p.data = data[key].astype(np.float32)
-        print(f"  ✓ Loaded from {path}")
+        print(f"  Loaded from {path}")
