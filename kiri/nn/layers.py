@@ -1,10 +1,5 @@
 """
 kiri/nn/layers.py
-
-All layer definitions. Two rules:
-  1. Every __init__ calls super().__init__()
-  2. No attribute named 'training' — MLX reserves it.
-     We use '_is_training' instead.
 """
 
 import numpy as np
@@ -19,7 +14,7 @@ else:
     _Base = object
 
 
-# ─── Module ───────────────────────────────────────────────────────────────────
+# Modules
 
 class Module(_Base):
     """Base class for all Kiri layers and models."""
@@ -81,7 +76,7 @@ class Module(_Base):
         return self.forward(*args, **kwargs)
 
 
-# ─── Linear ───────────────────────────────────────────────────────────────────
+# Linear
 
 class Linear(Module):
     """y = x @ W.T + b"""
@@ -115,7 +110,7 @@ class Linear(Module):
         return f"Linear({self.in_features} → {self.out_features})"
 
 
-# ─── Conv2d ───────────────────────────────────────────────────────────────────
+# Conv2D
 
 class Conv2d(Module):
     """2D convolution. Input: (N, C_in, H, W)"""
@@ -160,7 +155,7 @@ class Conv2d(Module):
         return f"Conv2d({self.in_channels}, {self.out_channels}, k={self.kernel_size})"
 
 
-# ─── BatchNorm1d ──────────────────────────────────────────────────────────────
+# BatchNorm
 
 class BatchNorm1d(Module):
     def __init__(self, num_features, eps=1e-5, momentum=0.1):
@@ -199,7 +194,7 @@ class BatchNorm1d(Module):
         return [self.weight, self.b]
 
 
-# ─── Dropout ──────────────────────────────────────────────────────────────────
+# Dropout
 
 class Dropout(Module):
     # NOTE: do NOT use 'training' — MLX.Module reserves that property.
@@ -220,7 +215,7 @@ class Dropout(Module):
             return x * Tensor(mask / (1.0 - self.p), requires_grad=False)
 
 
-# ─── Flatten ─────────────────────────────────────────────────────────────────
+# Flatten
 
 class Flatten(Module):
     def __init__(self):
@@ -232,7 +227,7 @@ class Flatten(Module):
         return x.reshape(x.shape[0], -1)
 
 
-# ─── Sequential ──────────────────────────────────────────────────────────────
+# Sequential
 
 class Sequential(Module):
     def __init__(self, *layers):
