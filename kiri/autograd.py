@@ -34,7 +34,7 @@ class Tensor:
         self._prev         = set(_children)
         self._op           = _op
 
-    # ── arithmetic ────────────────────────────────────────────────────────
+    # arithmetic
 
     def __add__(self, other):
         other = _wrap(other)
@@ -83,7 +83,7 @@ class Tensor:
         out._backward = _bwd
         return out
 
-    # ── activations ───────────────────────────────────────────────────────
+    # Activation
 
     def relu(self):
         out = Tensor(np.maximum(0, self.data), (self,), "relu")
@@ -148,7 +148,7 @@ class Tensor:
         out._backward = _bwd
         return out
 
-    # ── backprop ──────────────────────────────────────────────────────────
+    # backprop
 
     def backward(self):
         topo, visited = [], set()
@@ -163,7 +163,7 @@ class Tensor:
         for node in reversed(topo):
             node._backward()
 
-    # ── utils ─────────────────────────────────────────────────────────────
+    # utils
 
     @property
     def shape(self): return self.data.shape
