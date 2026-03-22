@@ -1,8 +1,6 @@
 """
 kiri/optim/optimizers.py
 
-Key fix: MLX optimizers take the MODULE object, not a list of params.
-The module must be an mlx.nn.Module (which our Module base class is).
 """
 
 import numpy as np
