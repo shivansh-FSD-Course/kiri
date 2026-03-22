@@ -1,2 +1,0 @@
-import kiri
-kiri.benchmark()

@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: kiri-ml
-Version: 0.2.1
+Version: 0.3.0
 Summary: Lightweight ML framework for Apple Silicon and CPU — no CUDA required
 License: MIT
 Project-URL: Homepage, https://github.com/yourusername/kiri

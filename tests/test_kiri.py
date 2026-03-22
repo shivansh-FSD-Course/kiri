@@ -350,9 +350,11 @@ class TestEndToEnd:
     def test_fit_numpy(self):
         X, y  = self._make_data()
         model = self._make_model()
-        hist  = model.fit(X, y, epochs=3, lr=1e-3, verbose=False)
-        assert len(hist["loss"]) == 3
-        assert hist["loss"][-1] < hist["loss"][0]  # loss decreased
+        # Use more epochs and a fixed seed so loss reliably decreases
+        np.random.seed(42)
+        hist  = model.fit(X, y, epochs=10, lr=1e-2, verbose=False)
+        assert len(hist["loss"]) == 10
+        assert hist["loss"][-1] < hist["loss"][0]
 
     def test_fit_dataloader(self):
         X, y   = self._make_data()

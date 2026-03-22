@@ -2,10 +2,9 @@
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
-
 [project]
 name = "kiri-ml"
-version = "0.2.1"
+version = "0.3.0"
 description = "Lightweight ML framework for Apple Silicon and CPU — no CUDA required"
 readme = "README.md"
 requires-python = ">=3.9"
