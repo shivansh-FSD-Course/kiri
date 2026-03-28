@@ -6,15 +6,7 @@
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Kiri is a Python deep learning framework that runs natively on **Apple Silicon (M1/M2/M3/M4)** and falls back gracefully to CPU on any machine. Built for students and developers who want to train real models without a $3000 gaming PC.
-
----
-
-## The problem
-
-You're in an ML course. The assignment asks you to train a CNN on MNIST. Your classmates with gaming rigs are done in 5 minutes. You have a MacBook Air or a budget laptop. You either wait 3 hours, crash out of memory, or give up.
-
-**Kiri fixes this.**
+Kiri is a Python deep learning framework that runs natively on **Apple Silicon (M1/M2/M3/M4)** and falls back  to CPU on any machine. Built for students(like me) who want to train real models and are absolutely broke :))).
 
 ---
 
@@ -175,7 +167,6 @@ kiri/
 - [x] LR schedulers
 - [x] DataLoader
 - [x] Apple Silicon auto-detection
-- [ ] Direct Apple Neural Engine dispatch (ANE)
 - [ ] Operator fusion (Linear → BN → ReLU in one kernel)
 - [ ] ONNX export
 - [ ] `kiri.datasets` (MNIST, CIFAR-10 auto-download)
